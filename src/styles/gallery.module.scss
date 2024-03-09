@@ -1,0 +1,69 @@
+/* https://codemyui.com/polaroid-images-gallery-in-pure-css/ */
+
+.gallery {
+
+	figure {
+		position: sticky;
+		top: 50px;
+		display: flex;
+		justify-content: center;
+
+		text-align:center;
+		display:inline-block;
+		list-style:none;
+		border:solid 12px #fff;
+		background:#fff;
+		//box-shadow:0 0 20px 0px #555;
+
+		transition:all 1s ease;
+		-o-transition:all 1s ease;
+		-moz-transition:all 1s ease;
+		-webkit-transition:all 1s ease;
+		
+		&:hover {
+			top:0px;
+			//opacity:0.5;
+			filter: grayscale(0);
+		} 
+
+		$photos: 20;
+
+		@for $i from 1 through $photos {
+			&:nth-child(#{$i}) {
+					$rotation: (($i - 1)/ ($photos - 1)) - 0.5;
+					transform: scale(1.0) rotate($rotation * 15deg);
+			}
+		}
+
+		img {
+			width: 50vmin;
+			height: 50vmin;
+			object-fit: cover;
+			filter: grayscale(1);
+			cursor: pointer;
+			transition: .5s;
+
+			&:hover {
+				filter: grayscale(0);
+				object-fit: contain;
+				-webkit-transform:scale(1.5);
+				transform:scale(1.5);
+			}
+		}
+
+		video {
+			width: 50vmin;
+			height: 50vmin;
+		}
+
+		p {
+			width: 50vmin;
+			height: fit-content;
+			text-align: center;
+			font-family: 'HomemadeApple', cursive;
+			font-size:20px;
+			color: #000;
+			margin: 25px;
+		}
+	}
+}
